@@ -1,0 +1,197 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Try_1
+{
+    class Program
+    {
+        public  static int Adder(int num3, int num4)
+        {
+            int result = num3 + num4;
+            return result;
+        }
+        static void Main(string[] args)
+        {
+            // DataType[] arrayName;//
+            int[] collection= { 1, 2,2,3,4 };
+            //2D array //
+            int[,] array2D = new int[,]
+            {
+                {1,2,3 }, // row 0//
+                {4,5,6 } // row 1//
+            };
+            //3D array //
+            string[,,] array3D = new string[,,]
+            {
+                {
+                    {"001","002" },
+                    {"003","004" }
+                },
+                {
+                    {"011","012" },
+                    {"013","014" }
+                }
+            };
+            Console.WriteLine(array3D[1, 1, 0]);// how to pull elements from multi dimentional arrays
+            Console.WriteLine(array3D.Rank);// how to pull elements from multi dimentional arrays
+
+            int length = 12;
+            //parsing means turning string intu numeric data type //
+            // int.tryParse(WhatToParse , out NewParsedVariable//
+            int age = 30;
+            float age2 = 30.99f; // float needs f  7digit//
+            bool isequal = age == age2;//to compare //
+            // && is AND  || is OR operator // 
+            decimal age3 = 1.5M; // float needs  m 28decimal//
+            char singlecharacter = 'a'; //char uses 1 character only //
+            //  cant divide int by double //
+            string name = "asd";
+            string nameup = name.ToUpper();
+            //explicit conversion//
+            double numdb = 32.22;
+            int numdbToInt;
+            numdbToInt = (int)numdb;
+            //explicit conversion//
+            //implicit conversion//
+            float somefloat = 30.32f;
+            double FloatToDouble= somefloat;
+            //implicit conversion//
+            string parsexample = "12";
+            string parsexample2 = "13";
+            string somestring = somefloat.ToString(); //tostring converts to string//
+            int parsed1 = Int32.Parse(parsexample);//parsing a string to a integer//
+            int parsed2 = Int32.Parse(parsexample2);
+            const int ConstantNumber = 3; // constant number  ,doesnt change ,doesnt mutate //
+                                          // <access specifier> <Return Type> <Method Name> (parameter list) { Method Body } //
+                                          //to call a method that is not in main method both methods needs to static (only static methods can call each other ) //
+                                          //to call a method out side of main it needs to be static //
+            int AdderViaInput() // method (no access  modifier need in main //
+            {
+                string x = Console.ReadLine();//reads input from the user//
+                string y = Console.ReadLine();
+                int result = Int32.Parse(x) + Int32.Parse(y);
+                return result;
+            }
+            Adder(2, 5);
+            try
+            {
+                //enter method here//
+                string x2 = Console.ReadLine();
+                int inputx2 = int.Parse(x2);
+            }
+            catch (FormatException) //trype of exception should be entered //
+            {
+
+                Console.WriteLine("error");//what happens when error occurs//
+            }
+            //classic if logic//
+            if (age2 < age )
+            {
+                Console.WriteLine("if here");
+            }
+            else if (age2 ==  age) 
+            {
+                Console.WriteLine("else if here");
+            }
+            else
+            {
+                Console.WriteLine("else here ");
+            }
+            //switch case//
+            switch (age)
+            {
+                case 15:
+                    //condition //
+                    break;
+                case 35:
+                    break;
+                default:
+                    break; //body like else//
+
+            }
+            // condition ? first_expression : second_expression;//
+            //cpmdition has to be true or false//
+            int tempature = -5;
+            string stateofmatter = tempature < 0 ? "solid" : "liquid"; // under 0 is solid ,else liquid //
+            string stateofmatter2 = tempature > 100 ? "gas" : tempature < 0 ? "solid" : "liquid"; // if else if and else statement //
+            // expressions can be another statement //
+            for (int i = 0; i < length; i++)// for (start value , condition , increment //
+            {
+                //body//
+            }
+            while (true) //while (condition)//
+            {
+                break; //body//
+            }
+            do
+            {
+                break;  //code block//
+                //icrement/
+            } while (true);//condition//
+
+            foreach (var item in collection)// python like array execution//
+            {
+                break;//body//
+            }
+            //------------------object orianted------------------//
+            //car instance created //
+            car audi = new car();
+            // car attribute created //
+           // audi.model = "q7";
+            audi.changeModel();
+            car bmw = new car("i8", "2019", 1000);
+            //setter used//
+            bmw.setterCar("i10");
+            //getter used//
+            bmw.getterCar();
+            foreach (int item in collection)//for each implementation//
+            {
+                int item2 = item * item;
+                Console.WriteLine(item2);
+            }
+            Console.WriteLine();
+            Console.ReadLine();
+        }
+    }
+    //-------------example class -----------//
+    public class car
+    {
+        //attribute is given to class/member variable //
+        private string model;
+        public string year;
+        public int price;
+
+        //member method //
+        public void changeModel()
+        {
+            Console.WriteLine("model has been changed");
+            //how to change an attribute via method//
+            this.model = "a8";
+        }
+        //car constructor with 3 parameters and their deafult versions//
+        public  car(string model=null, string year = null, int price = 0 ,string Country = null)
+        {
+            this.model = model;
+            this.year = year;
+            this.price = price;
+        }
+        //standart java type setter//
+        public void setterCar(string model)
+        {
+            this.model = model;
+        }
+        //standart java type getter//
+        public void getterCar( )
+        {
+            int x = this.price;
+            string sprice = x.ToString();
+            //return new[] { this.model, this.year, sprice };
+            Console.WriteLine("model = {0} , and year = {1} and price is {2}",this.model, this.year, sprice);
+            
+        }
+        
+    }
+}
