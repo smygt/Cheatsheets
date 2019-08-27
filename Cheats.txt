@@ -16,7 +16,7 @@ namespace Try_1
         static void Main(string[] args)
         {
             // DataType[] arrayName;//
-            int[] collection= { 1, 2,2,3,4 };
+            int[] collection = { 1, 2, 2, 3, 4 };
             //2D array //
             int[,] array2D = new int[,]
             {
@@ -57,7 +57,7 @@ namespace Try_1
             //explicit conversion//
             //implicit conversion//
             float somefloat = 30.32f;
-            double FloatToDouble= somefloat;
+            double FloatToDouble = somefloat;
             //implicit conversion//
             string parsexample = "12";
             string parsexample2 = "13";
@@ -88,11 +88,11 @@ namespace Try_1
                 Console.WriteLine("error");//what happens when error occurs//
             }
             //classic if logic//
-            if (age2 < age )
+            if (age2 < age)
             {
                 Console.WriteLine("if here");
             }
-            else if (age2 ==  age) 
+            else if (age2 == age)
             {
                 Console.WriteLine("else if here");
             }
@@ -140,7 +140,7 @@ namespace Try_1
             //car instance created //
             car audi = new car();
             // car attribute created //
-           // audi.model = "q7";
+            // audi.model = "q7";
             audi.changeModel();
             car bmw = new car("i8", "2019", 1000);
             //setter used//
@@ -152,10 +152,92 @@ namespace Try_1
                 int item2 = item * item;
                 Console.WriteLine(item2);
             }
-            Console.WriteLine();
+            string[,] grid2darray = new string[,]
+            {
+                {"   |   |   "},
+                {" 1 | 2 | 3 "},
+                {"___|___|___"},
+                {"   |   |   "},
+                {" 4 | 5 | 6 "},
+                {"___|___|___"},
+                {"   |   |   "},
+                {" 7 | 8 | 9 "},
+                {"   |   |   "},
+            };
+            string line = "";
+            bool GameCont=true;
+            int counter = grid2darray.Length;
+            void wincheck()
+            {
+                for (int i = 0; i < counter; i++)
+                {
+                    if ( i%3==1 && (grid2darray[i, 0][1] == grid2darray[i, 0][5] && grid2darray[i, 0][5] == grid2darray[i, 0][9]))
+                    { 
+                        Console.WriteLine("somebody won");
+                        GameCont = false;
+                    }
+                    else if(i % 4 == 1 && (grid2darray[1, 0][i] == grid2darray[4, 0][i] && grid2darray[4, 0][i] == grid2darray[7, 0][i]))
+                    {
+                        Console.WriteLine("somebodywon verticaly");
+                        GameCont = false;
+                    }
+                }
+                if (grid2darray[1, 0][1] == grid2darray[4, 0][5] && grid2darray[4, 0][5] == grid2darray[7, 0][9])
+                { 
+					Console.WriteLine("somebodywon diagonally");
+                    GameCont = false;
+                }
+                else if (grid2darray[7, 0][1] == grid2darray[4, 0][5] && grid2darray[4, 0][5] == grid2darray[1, 0][9])
+                {
+                    Console.WriteLine("somebodywon diagonally");
+                    GameCont = false;
+                }
+
+            }
+
+
+
+            void drawboard()
+            {
+                foreach (string item in grid2darray)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            void play()
+            {
+                while (GameCont)
+                {
+                    string x = Console.ReadLine();
+                    char y = char.Parse(x);
+                    if (x == "x" || x == "o")
+                    {
+                        for (int i = 0; i < counter; i++)
+                        {
+                            for (int k = 0; i < counter; k++)
+                            {
+                                if (y==grid2darray[i,0][k])
+                                {
+                                    
+                                }
+
+                            }
+                        }
+                    }
+                    else
+                        Console.WriteLine("try again bro");
+                }
+                drawboard();
+
+            }
+            drawboard();
+            wincheck();
+            Console.WriteLine(grid2darray[1, 0][1].ToString());
             Console.ReadLine();
         }
     }
+
+    
     //-------------example class -----------//
     public class car
     {
