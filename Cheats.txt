@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;//needed for array list//
 
 namespace Try_1
 {
@@ -15,6 +16,13 @@ namespace Try_1
         }
         static void Main(string[] args)
         {
+            ArrayList mylist = new ArrayList();
+            mylist.Add("121");
+            mylist.Add("122");
+            mylist.Add(10);//how to add to arraylist//
+            mylist.Remove(10);//how to remove from arraylist
+            mylist.Remove(mylist[0]);//how to remove with index//
+            Console.WriteLine(mylist[0]);
             // DataType[] arrayName;//
             int[] collection = { 1, 2, 2, 3, 4 };
             //2D array //
@@ -35,6 +43,13 @@ namespace Try_1
                     {"013","014" }
                 }
             };
+            //jagged array declaration //
+            int[][] Arr2 = new int[][]
+            {
+                new int[]{1,2,3,4,5},
+                new int[]{1,2,3}
+            };
+
             Console.WriteLine(array3D[1, 1, 0]);// how to pull elements from multi dimentional arrays
             Console.WriteLine(array3D.Rank);// how to pull elements from multi dimentional arrays
 
@@ -152,42 +167,50 @@ namespace Try_1
                 int item2 = item * item;
                 Console.WriteLine(item2);
             }
-            string[,] grid2darray = new string[,]
+            char[,] grid2darray =
             {
-                {"   |   |   "},
-                {" 1 | 2 | 3 "},
-                {"___|___|___"},
-                {"   |   |   "},
-                {" 4 | 5 | 6 "},
-                {"___|___|___"},
-                {"   |   |   "},
-                {" 7 | 8 | 9 "},
-                {"   |   |   "},
+                {' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
+                {' ','1',' ','|',' ','2',' ','|',' ','3',' '},
+                {'_','_','_','|','_','_','_','|','_','_','_'},
+                {' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
+                {' ','4',' ','|',' ','5',' ','|',' ','6',' '},
+                {'_','_','_','|','_','_','_','|','_','_','_'},
+                {' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
+                {' ','7',' ','|',' ','8',' ','|',' ','9',' '},
+                {' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
             };
+
+            // grid2darray[1, 1] = '2'; how to assign value//
+            // Two-dimensional array  //
+            int[,] arr = new int[,] {{1, 2},
+                                   {3, 4},
+                                   {5, 6},
+                                   {7, 8}};
+            arr[1,0] = 2;
             string line = "";
             bool GameCont=true;
-            int counter = grid2darray.Length;
+            int counter = grid2darray.Length/11;
             void wincheck()
             {
                 for (int i = 0; i < counter; i++)
                 {
-                    if ( i%3==1 && (grid2darray[i, 0][1] == grid2darray[i, 0][5] && grid2darray[i, 0][5] == grid2darray[i, 0][9]))
+                    if ( i%3==1 && (grid2darray[i, 1] == grid2darray[i, 5] && grid2darray[i, 5] == grid2darray[i, 9]))
                     { 
                         Console.WriteLine("somebody won");
                         GameCont = false;
                     }
-                    else if(i % 4 == 1 && (grid2darray[1, 0][i] == grid2darray[4, 0][i] && grid2darray[4, 0][i] == grid2darray[7, 0][i]))
+                    else if(i % 4 == 1 && (grid2darray[1, i] == grid2darray[4, i] && grid2darray[4, i] == grid2darray[7, i]))
                     {
                         Console.WriteLine("somebodywon verticaly");
                         GameCont = false;
                     }
                 }
-                if (grid2darray[1, 0][1] == grid2darray[4, 0][5] && grid2darray[4, 0][5] == grid2darray[7, 0][9])
+                if (grid2darray[1, 1] == grid2darray[4, 5] && grid2darray[4, 5] == grid2darray[7, 9])
                 { 
 					Console.WriteLine("somebodywon diagonally");
                     GameCont = false;
                 }
-                else if (grid2darray[7, 0][1] == grid2darray[4, 0][5] && grid2darray[4, 0][5] == grid2darray[1, 0][9])
+                else if (grid2darray[7, 1] == grid2darray[4, 5] && grid2darray[4, 5] == grid2darray[1, 9])
                 {
                     Console.WriteLine("somebodywon diagonally");
                     GameCont = false;
@@ -195,54 +218,71 @@ namespace Try_1
 
             }
 
-
-
             void drawboard()
             {
-                foreach (string item in grid2darray)
+                StringBuilder builder = new StringBuilder();
+
+                for (int k = 0; k < 9; )
                 {
-                    Console.WriteLine(item);
+
+
+                    for (int i = 0; i < grid2darray.Length/9; i++)
+                    {
+
+                        builder.Append(grid2darray[k, i]);
+
+                    }
+                    Console.WriteLine(builder);
+                    builder = new StringBuilder();
+                    k++;
                 }
+
             }
+
+            //TO DO //
             void play()
             {
                 while (GameCont)
                 {
+                    Console.Clear();
+
+                    drawboard();
+
                     string x = Console.ReadLine();
                     char y = char.Parse(x);
-                    if (x == "x" || x == "o")
+                    if (y == '1')
                     {
-                        for (int i = 0; i < counter; i++)
-                        {
-                            for (int k = 0; i < counter; k++)
-                            {
-                                if (y==grid2darray[i,0][k])
-                                {
-                                    
-                                }
-
-                            }
-                        }
+                        grid2darray[1, 1] = 'X';
+                        
                     }
                     else
                         Console.WriteLine("try again bro");
                 }
-                drawboard();
+                
 
             }
             drawboard();
             wincheck();
-            Console.WriteLine(grid2darray[1, 0][1].ToString());
+            RaceCar mcleren = new RaceCar();
+            Console.WriteLine(mcleren.price);
+            mcleren.RDrive();
+            mcleren.Drive();
+            mcleren.changeModel();
             Console.ReadLine();
+            
+
         }
     }
-
-    
+    //interface implementation //
+    public interface CarInterface
+    {
+        void Drive();
+    }
     //-------------example class -----------//
-    public class car
+    public class car:CarInterface
     {
         //attribute is given to class/member variable //
-        private string model;
+        public string model;
         public string year;
         public int price;
 
@@ -254,7 +294,7 @@ namespace Try_1
             this.model = "a8";
         }
         //car constructor with 3 parameters and their deafult versions//
-        public  car(string model=null, string year = null, int price = 0 ,string Country = null)
+        public  car(string model=null, string year = null, int price = 1000 ,string Country = null)
         {
             this.model = model;
             this.year = year;
@@ -274,6 +314,51 @@ namespace Try_1
             Console.WriteLine("model = {0} , and year = {1} and price is {2}",this.model, this.year, sprice);
             
         }
+
+        public void Drive()
+        {
+            Console.WriteLine("wroom from drive");
+        }
+
+
+
+        //inheritance deffining a class in terms of another class//
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Try_1
+{   //interface initialization here (use a different file in real use)
+    public interface RaceCarInterface
+    {
+        void RDrive();
         
+    }
+    // this class inherits from car class//
+    class RaceCar:car,RaceCarInterface
+    {
+        public int HrP;
+        // cant access properties here if they're piravate //
+        public RaceCar(int HrP = 200) : base()
+        {
+            this.HrP = HrP;
+        }
+        //overrides the changeModel method "new" keyword is used//
+        public new void  changeModel()
+        {
+            Console.WriteLine("cant change model of a race car");
+        }
+
+        public void RDrive()
+        {
+            Console.WriteLine("wroom");
+
+        }
     }
 }
