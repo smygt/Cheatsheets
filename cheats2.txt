@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Try_2
+{
+    //struct vs class//
+       /* Classes Only:
+
+    Can support inheritance
+    Are reference(pointer) types
+    The reference can be null
+    Have memory overhead per new instance
+        Structs Only:
+    //--------//
+    Cannot support inheritance
+    Are value types
+    Are passed by value(like integers)
+    Cannot have a null reference(unless Nullable is used)
+    Do not have a memory overhead per new instance - unless 'boxed'
+        Both Classes and Structs:
+    //--------//
+    Are compound data types typically used to contain a few variables that have some logical relationship
+    Can contain methods and events
+    Can support interfaces*/
+    //--------//
+
+    //struct implementation//
+    public struct Game
+    {
+        public int playtime { get; set; }
+
+        public Game(int playtime)
+        {
+            this.playtime = playtime;
+        }
+    }
+    class Program
+    {
+        
+        //delegate usage here it takes a method as a parameter with its own parameter//
+        //parameter number must match or overload error//
+        public delegate int Somemath(int i,int k);
+        public delegate int Somemath2(int i);
+        //enum implementation here//
+        enum day { pzt,sl,çrş,prş,cm,cmt,pzr}
+        //index starts from 2 //
+        enum Workout { chest = 2,arms,legs,shoulders,core}
+        static void Main(string[] args)
+
+        {
+            //--math class Math. lots of usefull methods//
+            //initilize a random class object//
+            Random randgenerator = new Random();
+            //initilize a integer and asign a value from random class//
+            int k = randgenerator.Next(0, 101);
+            
+
+            Console.WriteLine(k);
+            day pazartesi = day.pzt;
+             int e = (int)day.pzr;
+            Console.WriteLine(e);
+            List<int> listx = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+            int add(int a ,int b)
+            {
+                return a + b;
+            }
+            Somemath math = new Somemath(add);
+            Console.WriteLine(math(12,12));
+            //find all = FindAlll(condition) finds all that makes the condition true//
+            List<int> T3 = listx.FindAll(delegate (int x) 
+            {
+                return x > 3;
+            });
+            //(i => condition ) lambda expresion)//
+            List<int> T4 = listx.FindAll(i => i > 4);
+            Console.WriteLine(T4[1]);
+            //Lambda  
+            Somemath2 deneme = new Somemath2(i => i * 2);
+            Console.WriteLine(deneme(4));
+            Console.ReadLine();
+            //some usefull list methods//
+            // listname.count (loop usage) //
+            //FindIndex (condition) finds the index in condition)
+            //add(),sort(),RemoveRange(2,2) (delete 2nd value and 2 after that (2,3,4) ,RemoveAt() (remove at a index)//
+            
+        }
+    }
+
+}
