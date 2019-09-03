@@ -314,8 +314,8 @@ namespace Try_1
             Console.WriteLine("model = {0} , and year = {1} and price is {2}",this.model, this.year, sprice);
             
         }
-
-        public void Drive()
+        //Needs the virtual keyword to be overriden//
+        public virtual void  Drive()
         {
             Console.WriteLine("wroom from drive");
         }
@@ -325,8 +325,7 @@ namespace Try_1
         //inheritance deffining a class in terms of another class//
     }
 }
-
-
+-------------------------Different file---------------------------
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -360,5 +359,12 @@ namespace Try_1
             Console.WriteLine("wroom");
 
         }
+        // sealed cant be overried and overrides this from car class
+        public sealed override void Drive()
+        {
+            Console.WriteLine("wroom");
+
+        }
+
     }
 }
