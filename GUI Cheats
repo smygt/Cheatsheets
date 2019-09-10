@@ -64,3 +64,51 @@ namespace GUI_TRY
     </Grid>
 
 </Window>
+
+--------------------------HOW TO USE GRID SYSTEM------------------------------------
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0">
+            <Button.Content>
+                <TextBlock>asdasda</TextBlock>
+            </Button.Content>
+        </Button>
+        <Button Grid.Column="1">
+            <Button.Content>
+                <TextBlock>tests</TextBlock>
+            </Button.Content>   
+        </Button>
+    </Grid>
+</Window>
+-----------------------------DATA BINDING---------------------------------------------
+    
+    4Modes of Data Binding
+    Binding Target:   <-    oneWay       Binding Source
+    Binding Target:   <-    twoWay     ->  Binding Source
+    Binding Target:        oneWayToSource   ->    Binding Source
+    Binding Target:   <_ _ _    OneTime      Binding Source - done in constructor so only once during intialization
+    
+    -->
+    <StackPanel>
+        <!-- Textbox is the target-->
+        <TextBox Name="MyTextBox" Width="100" Margin="50" Text="{Binding ElementName=MySlider, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <!-- Slider is binding source-->
+        <Slider IsSnapToTickEnabled="True" Name="MySlider" Minimum="0" Maximum="100"></Slider>
+    </StackPanel>
+</Window>
+/////4 TH WAY ////
+        public MainWindow()
+        {
+            InitializeComponent();
+            MySlider.Value = 30;
+            MyTextBox.Text = MySlider.Value.ToString();
+        }
+
+        private void MySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
