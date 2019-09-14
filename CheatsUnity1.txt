@@ -1,0 +1,25 @@
+   //Generic movement 
+   public float SpeedOfCube = 5f;
+    Rigidbody MyRigidBody;
+    // Start is called before the first frame update
+    void Start()
+    {
+        MyRigidBody = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float MoveHorizontal = Input.GetAxis("Horizontal");
+        float MoveVertical = Input.GetAxis("Vertical");
+        Vector3 movement = new Vector3(MoveHorizontal, 0f, MoveVertical);
+        MyRigidBody.AddForce(movement * SpeedOfCube);
+
+    }
+    ------------------ON TRIGER EVENT --------------------------
+        private void OnTriggerEnter(Collider other)
+    {
+        print("ENTERED");
+        Destroy(gameObject);
+
+    }
