@@ -23,3 +23,14 @@
         Destroy(gameObject);
 
     }
+    //Save object as prefab
+    //create an empty object 
+    //create a script 
+    public Transform prefab;
+     void Start()
+    {
+        //add prefab in to the script
+        Instantiate(prefab, new Vector3(i * 3f + 0, 0), Quaternion.identity);
+        //how to invoke a method repeating 
+        InvokeRepeating("methodName" ,4,5)
+    }
