@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+<!--BOOTSTRAP  -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style media="screen">
+table{
+}
+td{
+  height: 200px;
+  border: 3px solid black;
+  text-align: center;
+  width: 200px;
+  font-size: 100px  ;
+}
+.col-3{
+border:5px solid red ;
+}
+.col-9{
+border:5px solid blue;
+
+}
+.col-6{
+border:5px solid black;
+}
+.col-8{
+  border:5px solid black;
+
+}
+#loginDiv{
+  padding-bottom: 25px;
+
+}
+#Navbar{
+  float : right;
+  float:
+}
+div.scroll {
+                margin:4px, 4px;
+                padding:4px;
+                height: 900px;
+                overflow-x: hidden;
+                overflow-x: auto;
+                text-align:justify;
+            }
+<!--soruların kaydırağı  -->
+
+#navbarText{
+  text-
+}
+
+</style>
+    <meta charset="utf-8">
+    <title>Anket proje</title>
+  </head>
+  <body>
+  {{inserted}}
+
+    <!--baştaki content  -->
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <img class="img-fluid"src="{% static "images/image1.jpg" %}" alt="My image">
+    </div>
+    <div id="loginDiv" class="col-3">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
+</div>
+<!--  orta contetnt -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+
+      <!-- Navbar content -->
+      <nav class="navbar navbar-dark navbar-expand bg-dark justify-content-center">
+          <a href="/" class="navbar-brand d-flex w-50 mr-auto">Navbar 3</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+              <ul class="navbar-nav w-100 justify-content-left  ">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Codeply</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                  </li>
+              </ul>
+
+          </div>
+      </nav>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!--  alt content-->
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6">
+    <div class="scroll">
+      LIST OF PEOPLE
+<table>
+  {% if access_records %}
+  <thead>
+    <th>Nane</th>
+    <th>LastName</th>
+    <th>id</th>
+  </thead>
+  {% for acc in access_records%}
+    <tr>{{acc.Name}}</tr>
+    <tr>{{acc.LastName}}</tr>
+    <tr>{{acc.id}}</tr>
+  </table>
+  {% endfor %}
+  {% else %}
+  <p>no records</p>
+  {% endif %}
+
+      </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
+</div>
+
+
+  </body>
+  <!-- <script type="text/javascript" src="Onyuz.js"> -->
+
+  </script>
+</html>
