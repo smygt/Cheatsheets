@@ -1,0 +1,19 @@
+TEMPLATE TAGGING VIEWS AND HTML
+IMPORT THE MODELS YOU WANT TO DISPLAY 
+TO INSERT VIA TEMP TAGGING
+    dict_name = {'tag_to_insert':'thing to be insrted'}
+    return render(request,'Anasayfa.html',context=dict_name) (thing to be insterted gözükücek)
+  
+    #######DB RECORD BASTIRMA #####
+    db_records=[1,2,3,4,5](db_model_name.objects.order_by('id'))modeldeki tüm bilgi (db_model_name.telefon.order_by(id)modeldeki teller
+    dict_name = {'tag_to_insert':db_records}
+    return render(request,'template.html',context=dict_name)
+    
+    
+    HTML 
+          {% if tag_to_insert %}
+      {% for item  in tag_to_insert %}  
+        <p>{{item}} </p>(ne oldugu farketmez )
+
+      {% endfor %}
+      {% endif %} 
