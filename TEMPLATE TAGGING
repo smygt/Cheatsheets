@@ -1,6 +1,9 @@
+model_Adı.objects.all() (TÜM OBJELER)
+db_records=duyuru_model.objects.all().order_by('-id')[:5]
 TEMPLATE TAGGING VIEWS AND HTML
 IMPORT THE MODELS YOU WANT TO DISPLAY 
 TO INSERT VIA TEMP TAGGING
+CLEAN DATA CANT BE REACH BEFORE IS_VALID IS CALLED
     dict_name = {'tag_to_insert':'thing to be insrted'}
     return render(request,'Anasayfa.html',context=dict_name) (thing to be insterted gözükücek)
   
